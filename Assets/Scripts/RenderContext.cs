@@ -8,16 +8,16 @@ namespace CreateAR.Commons.Unity.DebugRenderer
 
         protected virtual void Setup(int mode)
         {
-            GL.Begin(mode);
             GL.PushMatrix();
-            GL.LoadIdentity();
+            GL.LoadProjectionMatrix(Camera.main.projectionMatrix);
+            GL.Begin(mode);
             GL.Color(_color);
         }
 
         protected virtual void Teardown()
         {
-            GL.PopMatrix();
             GL.End();
+            GL.PopMatrix();
         }
 
         public RenderContext Color(Color color)

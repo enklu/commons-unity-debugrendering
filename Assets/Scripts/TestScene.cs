@@ -87,13 +87,48 @@ namespace CreateAR.Commons.Unity.DebugRenderer
 
         private void Draw2D()
         {
-            return;
             var handle = _renderer.Handle2D("Line");
             if (null != handle)
             {
                 handle.Draw(ctx =>
                 {
                     ctx.Line(Vector2.zero, new Vector2(Screen.width, Screen.height));
+                });
+            }
+
+            handle = _renderer.Handle2D("Lines");
+            if (null != handle)
+            {
+                handle.Draw(ctx =>
+                {
+                    ctx.Lines(new []
+                    {
+                        new Vector2(10, 10), new Vector2(20, 10),
+                        new Vector2(10, 10), new Vector2(10, 20)
+                    });
+                });
+            }
+
+            handle = _renderer.Handle2D("Square");
+            if (null != handle)
+            {
+                handle.Draw(ctx =>
+                {
+                    ctx.Square(new Vector2(200, 40), 20);
+                    ctx.Square(new Vector2(200, 40), 10);
+                    ctx.Square(new Vector2(200, 40), 5);
+                });
+            }
+
+            handle = _renderer.Handle2D("Rectangle");
+            if (null != handle)
+            {
+                handle.Draw(ctx =>
+                {
+                    ctx.Rectangle(new Rect(
+                        1, 1,
+                        Screen.width - 2,
+                        Screen.height - 2));
                 });
             }
         }

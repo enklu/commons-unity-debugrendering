@@ -119,9 +119,7 @@ namespace CreateAR.Commons.Unity.DebugRenderer
         public void Update(float dt)
         {
             _material.SetPass(0);
-
-            GL.PushMatrix();
-
+            
             for (int i = 0, len = _renderers.Count; i < len; i++)
             {
                 _renderers[i].Action(_context);
@@ -136,21 +134,11 @@ namespace CreateAR.Commons.Unity.DebugRenderer
                 _renderers2D[i].Action(_context2D);
 
                 _defaultColor = Color.white;
-                //_context2D.Color(_defaultColor);
+                _context2D.Color(_defaultColor);
             }
             _renderers2D.Clear();
-
-            GL.PopMatrix();
         }
-
-        public void Update2D(float dt)
-        {
-            for (int i = 0, len = _renderers2D.Count; i < len; i++)
-            {
-                _renderers2D[i].Action(_context2D);
-            }
-        }
-
+        
         protected void PrepareMaterial()
         {
             _material = new Material(Shader.Find("Hidden/Internal-Colored"))
