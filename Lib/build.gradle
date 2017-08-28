@@ -1,0 +1,42 @@
+def csc = System.getenv("CSC") ?: cscPath
+def projName = 'CreateAR.Commons.Unity.Debug'
+def csproj = "${projName}.csproj"
+def nupkg = "bin/Debug/${projName}.nupkg"
+
+task clean(type:Delete) {
+    delete 'bin'
+}
+
+task restore(type:Exec) {
+    executable 'nuget'
+    args 'restore', csproj
+}
+
+task build(type:Exec, dependsOn:['restore', 'clean']) {
+    executable csc
+    args csproj, '/target:Clean;Rebuild'
+}
+
+task pack(type:Exec, dependsOn: build) {
+    executable csc
+    args '/t:pack', csproj
+}
+
+task upload(dependsOn:pack) {
+    doLast {
+        // find nupkg in /bin
+        file('bin/Debug').eachFileRecurse(groovy.io.FileType.FILES) {
+            def path = it.path
+            if (!path.endsWith('nupkg')) {
+                return;
+            }
+
+            print "Uploading $path..."
+            exec {
+                executable 'nuget'
+                args 'push', '-Source', 'Nexus', path
+                standardOutput System.out
+            }
+        }
+    }
+}
