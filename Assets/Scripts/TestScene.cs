@@ -69,7 +69,7 @@ namespace CreateAR.Commons.Unity.DebugRenderer
                 });
             }
 
-            handle = _renderer.Handle("Lines");
+            handle = _renderer.Handle("LineStrip");
             if (null != handle)
             {
                 handle.Draw(ctx =>
@@ -81,6 +81,17 @@ namespace CreateAR.Commons.Unity.DebugRenderer
                         new Vector3(-3, 1, -3),
                         new Vector3(-5, -4, 2)
                     });
+                });
+            }
+
+            handle = _renderer.Handle("Prism");
+            if (null != handle)
+            {
+                handle.Draw(ctx =>
+                {
+                    ctx.Prism(new Bounds(
+                        new Vector3(3, 3, 3),
+                        new Vector3(3, 2, 1)));
                 });
             }
         }
