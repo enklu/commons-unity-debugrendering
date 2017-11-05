@@ -72,6 +72,25 @@ namespace CreateAR.Commons.Unity.DebugRenderer
         }
 
         /// <summary>
+        /// Draws a line strip.
+        /// </summary>
+        /// <param name="lines">A list of waypoints to draw along.</param>
+        /// <returns></returns>
+        public RenderContext2D LineStrip(Vector2[] lines)
+        {
+            var len = lines.Length;
+            var cast = new Vector3[len];
+            for (var i = 0; i < len; i++)
+            {
+                cast[i] = lines[i];
+            }
+
+            _context.LineStrip(cast);
+
+            return this;
+        }
+
+        /// <summary>
         /// Draws a square.
         /// </summary>
         /// <param name="center">Center of the square.</param>
