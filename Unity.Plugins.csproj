@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>GamePlugins:3</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -89,11 +87,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Plugins\CreateAR\DebugRenderer.cs" />
-    <Compile Include="Assets\Plugins\CreateAR\DebugRendererMonoBehaviour.cs" />
-    <Compile Include="Assets\Plugins\CreateAR\FilteredRendererHandle.cs" />
-    <Compile Include="Assets\Plugins\CreateAR\RenderContext.cs" />
-    <Compile Include="Assets\Plugins\CreateAR\RenderContext2d.cs" />
+    <Compile Include="Assets\Plugins\CreateAR\Debug\DebugRenderer.cs" />
+    <Compile Include="Assets\Plugins\CreateAR\Debug\DebugRendererMonoBehaviour.cs" />
+    <Compile Include="Assets\Plugins\CreateAR\Debug\FilteredRendererHandle.cs" />
+    <Compile Include="Assets\Plugins\CreateAR\Debug\RenderContext.cs" />
+    <Compile Include="Assets\Plugins\CreateAR\Debug\RenderContext2d.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
